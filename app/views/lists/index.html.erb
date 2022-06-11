@@ -1,0 +1,13 @@
+<h1>Your lists</h1>
+<div class="card-deck d-flex">
+  <% @lists.each do |list| %>
+    <div class="card text-center" style="width: 400px; margin: 16px; padding: 16px;">
+      <img class="card-img-top" src="https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= list.name %></h5>
+        <%= link_to 'View list', list, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'Add a new list', new_list_path, :class => "btn btn-primary"  %>

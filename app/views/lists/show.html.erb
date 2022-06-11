@@ -1,0 +1,14 @@
+<h2><%= @list.name %></h2>
+<div class="card-deck d-flex">
+  <% @list.bookmarks.each do |bookmark| %>
+  <div class="card text-white bg-primary mb-3" style="width: 400px; margin: 16px; padding: 16px;">
+    <img class="card-img-top" src="<%= Movie.find(bookmark.movie_id).poster_url %>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= bookmark.comment %></h5>
+    </div>
+  </div>
+
+<% end %>
+</div>
+<%= link_to 'Add a new movie',  new_list_bookmark_path(@list) %>
+<%= link_to 'Back to lists',  lists_path %>
