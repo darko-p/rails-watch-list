@@ -1,8 +1,9 @@
-<%= simple_form_for @list do |f| %>
-  <%= f.input :name %>
-  <%= f.input :background, collection: [image_path("film_projector.jpg"), image_path("live_set.jpg"), image_path("cinema_seats.jpg")] %>
-  <%= f.button :submit %>
-<% end %>
-
+<div class="mb-3">
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name %>
+    <%= f.input :background, collection: [image_path("film_projector.jpg"), image_path("live_set.jpg"), image_path("cinema_seats.jpg")] %>
+    <%= f.button :submit , class: "btn btn-primary"%>
+  <% end %>
+</div>
 
 <%= link_to 'Back to lists',  root_path, :class => "btn btn-primary" %>
