@@ -1,14 +1,41 @@
-<h2><%= @list.name %></h2>
-<div class="card-deck d-flex">
-  <% @list.bookmarks.each do |bookmark| %>
-  <div class="card text-white bg-primary mb-3" style="width: 400px; margin: 16px; padding: 16px;">
-    <img class="card-img-top" src="<%= Movie.find(bookmark.movie_id).poster_url %>" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"><%= bookmark.comment %></h5>
+<section class="py-5 text-center container-fluid" style="background-image: url(<%= @list.background%>)">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light text-white py-5"><%= @list.name %></h1>
+      <p>
+        <%= link_to 'Add a movie',  new_list_bookmark_path(@list), :class => "btn btn-primary"%>
+        <%= link_to 'Back to lists',  lists_path, :class => "btn btn-primary" %>
+      </p>
     </div>
   </div>
+</section>
 
-<% end %>
-</div>
-<%= link_to 'Add a new movie',  new_list_bookmark_path(@list) %>
-<%= link_to 'Back to lists',  lists_path %>
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="col">
+          <div class="card shadow-sm">
+              <div class="position-relative">
+                <img class="card-img-top" src="<%= Movie.find(bookmark.movie_id).poster_url %>" alt="Card image cap">
+
+              </div>
+              <div class="card-body">
+              <p class="card-text"><%= bookmark.comment %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, :class => "btn btn-sm btn-outline-secondary"  %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+      </div>
+    </div>
+  </div>
